@@ -1,168 +1,57 @@
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>小怪獸材料包</title>
+  <title>no25art 小怪獸材料包</title>
   <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      line-height: 1.6;
-      padding: 0;
-      margin: 0;
-      background: #fff8f0;
-    }
-    header {
-      background: #ffffff;
-      border-bottom: 1px solid #ddd;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-    .left-nav {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .logo-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-    .logo-btn img {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-    }
-    .menu {
-      display: none;
-      position: absolute;
-      top: 60px;
-      left: 20px;
-      background: white;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      border-radius: 6px;
-      overflow: hidden;
-    }
-    .menu a {
-      display: block;
-      padding: 10px 16px;
-      text-decoration: none;
-      color: #333;
-      border-bottom: 1px solid #eee;
-    }
-    .menu a:last-child {
-      border-bottom: none;
-    }
-    .menu a:hover {
-      background: #f0f0f0;
-    }
-    .right-nav a {
-      margin-left: 16px;
-      text-decoration: none;
-      color: #444;
-      font-weight: bold;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 20px;
-    }
-    .product, .gallery, .about {
-      margin-bottom: 40px;
-    }
-    .gallery img {
-      width: 100%;
-      max-width: 360px;
-      margin-bottom: 10px;
-      border-radius: 8px;
-    }
-    .gallery div {
-      margin-bottom: 30px;
-    }
-    .about img {
-      width: 100%;
-      max-width: 400px;
-      border-radius: 10px;
-    }
-    .button {
-      background: #3c74e6;
-      color: white;
-      padding: 10px 16px;
-      border: none;
-      border-radius: 4px;
-      text-decoration: none;
-      display: inline-block;
-    }
+    body { font-family: sans-serif; margin: 0; padding: 0; line-height: 1.6; }
+    header, footer { background: #f6f6f6; padding: 1rem; text-align: center; }
+    .logo { width: 48px; border-radius: 50%; vertical-align: middle; margin-right: 8px; }
+    .section { padding: 2rem; max-width: 800px; margin: auto; }
+    .shop-item { border: 1px solid #ddd; padding: 1rem; border-radius: 8px; }
+    .faq, .testimonials { margin-top: 1.5rem; }
   </style>
 </head>
 <body>
+  <header>
+    <img src="assets/logo.png" alt="logo" class="logo" />
+    <strong>no25art</strong>｜<a href="#shop">Shop</a>｜<a href="#about">關於我</a>
+  </header>
 
-<header>
-  <div class="left-nav">
-    <button class="logo-btn" onclick="toggleMenu()">
-      <img src="assets/logo.png" alt="Logo" />
-    </button>
-    <div class="menu" id="menu">
-      <a href="#product">🛒 Shop</a>
-      <a href="#about">🧵 關於我</a>
-    </div>
-  </div>
-  <div class="right-nav">
-    <a href="#">🛒 購物車</a>
-    <a href="#">登入 / 註冊</a>
-  </div>
-</header>
-
-<div class="container">
-  <h1>小怪獸材料包</h1>
-  <p>陪你用手作創造療癒的日常</p>
-
-  <div id="product" class="product">
-    <h2>產品介紹：小怪獸材料包</h2>
-    <p><strong>售價：</strong>NT$688</p>
-    <p><strong>內容物：</strong>戳針、毛線、布料（包含所有材料）</p>
-    <p><strong>適合對象：</strong>初學者</p>
-    <p><strong>特色介紹：</strong>可愛的小怪獸創作，適合療癒紓壓，也適合親子同樂。</p>
-    <a class="button" href="https://p.ecpay.com.tw/B067F7F" target="_blank">立即購買</a>
-  </div>
-
-  <div class="gallery">
-    <h2>小怪獸成品展示</h2>
-    <div>
-      <img src="assets/gallery1.jpg" alt="修剪小怪獸">
-      <p>這是牠剛做好準備要出場的樣子，小朋友看到這一幕都會說「牠的眼睛在看我！」，很適合跟孩子一起幫小怪獸完成最後造型。</p>
-    </div>
-    <div>
-      <img src="assets/gallery2.jpg" alt="兄弟小怪獸">
-      <p>這是第一對兄弟小怪獸，一個愛笑、一個裝酷。很多爸媽說孩子會幫牠們取名字，然後每天跟牠們說話～真的會變成家的新夥伴！</p>
+  <div class="section" id="shop">
+    <h2>小怪獸材料包</h2>
+    <div class="shop-item">
+      <img src="assets/gallery1.jpg" alt="小怪獸" width="200"/>
+      <p>價格：NT$688</p>
+      <p>內容：可愛的小怪獸創作，適合療癒紓壓，也適合親子同樂。</p>
+      <button onclick="alert('功能待串接：前往結帳')">立即購買</button>
     </div>
   </div>
 
-  <div id="about" class="about">
-    <h2>我們的理念：有溫度的陪伴</h2>
-    <img src="assets/about.jpg" alt="與小怪獸的創作時光">
-    <p>
-      在這個快節奏的時代，我想透過一針一線，慢慢縫出屬於我們與小怪獸的故事。
-      小怪獸不是完美的，但牠總是在，用最純粹的模樣，陪你一起過日常。
-      這份材料包，不只是手作體驗，更是一種陪伴的方式——
-      讓你和自己、和孩子、和身邊的人，都能在過程中找到安心、笑聲與連結。
-      這是我想傳遞的手作精神：<strong>溫度，不只存在於手中，也藏在心裡。</strong>
-    </p>
+  <div class="section" id="about">
+    <h2>品牌故事</h2>
+    <p><strong>Yulian：</strong>透過手作傳遞溫暖療癒的陪伴，讓每個人都能在創作中找回自己的節奏。</p>
   </div>
-</div>
 
-<script>
-  function toggleMenu() {
-    const menu = document.getElementById("menu");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
-  }
-</script>
+  <div class="section faq">
+    <h3>常見問題</h3>
+    <ul>
+      <li><strong>出貨時間：</strong>付款完成後約 3~5 個工作天</li>
+      <li><strong>可否退換：</strong>除重大瑕疵外，恕不接受退換貨</li>
+      <li><strong>指定到貨？</strong>目前不支援，依物流為準</li>
+    </ul>
+  </div>
 
+  <div class="section testimonials">
+    <h3>顧客回饋</h3>
+    <p><strong>Lulu 媽媽：</strong>跟小孩一起做超療癒，小怪獸真的太可愛了！</p>
+    <p><strong>Wenwen：</strong>材料超完整，連新手也能做得很開心，還會再回購～</p>
+  </div>
+
+  <footer>
+    <p>📬 聯絡方式：no25artroom@gmail.com｜IG：@no25art｜LINE：@no25art</p>
+    <p>© 2025 no25art</p>
+  </footer>
 </body>
 </html>
