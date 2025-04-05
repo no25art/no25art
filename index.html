@@ -1,24 +1,87 @@
 
-
-<header style="background:#fff6f0;padding:1rem;text-align:center;">
-  <a href="index.html"><img src="assets/logo.png" alt="logo" style="width:40px;border-radius:50%;vertical-align:middle;"></a>
-  <span style="margin-left:8px;font-weight:bold;">no25art</span> |
-  <a href="index.html">首頁</a> |
-  <a href="faq.html">常見問題</a> |
-  <a href="testimonials.html">顧客回饋</a> |
-  <a href="notice.html">購物須知</a>
-</header>
-
-<main style="max-width:800px;margin:2rem auto;padding:0 1rem;">
-  <h2>小怪獸材料包</h2>
-  <img src="assets/gallery1.jpg" alt="商品圖" style="max-width:100%;border-radius:8px;">
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>no25art 小怪獸材料包</title>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+</head>
+<body style="font-family:sans-serif;padding:2rem;">
+  <h1>小怪獸材料包</h1>
+  <img src="assets/gallery1.jpg" alt="商品圖" style="max-width:300px;border-radius:8px;" />
   <p>價格：NT$688</p>
-  <p>內容：可愛的小怪獸創作，適合療癒紓壓，也適合親子同樂。</p>
-  <button onclick="alert('功能尚未串接')">立即購買</button>
-</main>
+  <p>可愛的小怪獸創作，適合療癒紓壓，也適合親子同樂。</p>
 
-<footer style="background:#f2f2f2;padding:1rem;text-align:center;font-size:14px;">
-  📬 聯絡方式：no25artroom@gmail.com｜IG：@no25art｜LINE：@no25art
-  <div>© 2025 no25art</div>
-</footer>
+  <label for="email">請輸入 Email 以完成訂購：</label><br/>
+  <input type="email" id="email" placeholder="you@example.com" style="padding:8px;width:300px;"><br/><br/>
+  <button onclick="checkout()" style="padding:10px 20px;font-size:16px;">立即購買</button>
 
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIza....",
+      authDomain: "no25art.firebaseapp.com",
+      projectId: "no25art",
+      storageBucket: "no25art.appspot.com",
+      messagingSenderId: "...",
+      appId: "..."
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const item = {
+      id: "item001",
+      name: "小怪獸材料包",
+      price: 688
+    };
+
+    function checkout() {
+      const email = document.getElementById("email").value;
+      if (!email) {
+        alert("請先輸入 Email");
+        return;
+      }
+
+      db.collection("orders").add({
+        email: email,
+        itemId: item.id,
+        itemName: item.name,
+        amount: item.price,
+        timestamp: new Date()
+      }).then(() => {
+        const form = document.createElement("form");
+        form.method = "POST";
+        form.action = "https://payment.ecpay.com.tw/Cashier/AioCheckOut/V5";
+
+        const params = {
+          MerchantID: "3248362",
+          MerchantTradeNo: "NO25ART" + Date.now(),
+          MerchantTradeDate: new Date().toLocaleString("zh-TW", { hour12: false }),
+          PaymentType: "aio",
+          TotalAmount: item.price,
+          TradeDesc: "no25art 商品",
+          ItemName: item.name,
+          ReturnURL: "https://no25art.com/thanks.html",
+          ChoosePayment: "ALL",
+          EncryptType: 1,
+          ClientBackURL: "https://no25art.com/thanks.html",
+          Email: email,
+          CheckMacValue: "PLACEHOLDER"
+        };
+
+        for (const key in params) {
+          const input = document.createElement("input");
+          input.type = "hidden";
+          input.name = key;
+          input.value = params[key];
+          form.appendChild(input);
+        }
+
+        document.body.appendChild(form);
+        form.submit();
+      });
+    }
+  </script>
+</body>
+</html>
