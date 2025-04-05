@@ -1,70 +1,26 @@
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>no25art 小怪獸材料包</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>no25art 商店</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
-  <script defer src="app.js"></script>
 </head>
 <body>
   <header>
-    <img src="assets/logo.png" alt="Logo">
+    <a href="index.html"><img src="assets/logo.png" alt="logo" class="logo" /></a>
     <nav>
-      <a href="#shop">Shop</a>
-      <a href="#about">關於我</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">關於我</a>
     </nav>
   </header>
-
-  <div class="container">
-    <section id="shop">
-      <h2>小怪獸材料包</h2>
-      <div class="product-card">
-        <img src="assets/gallery1.jpg" alt="產品圖">
-        <p>價格：NT$688</p>
-        <p>可愛的小怪獸創作，適合療癒紓壓，也適合親子同樂。</p>
-        <input type="email" id="email" placeholder="輸入 email 訂購" />
-        <button onclick="checkout()">立即購買</button>
-      </div>
-    </section>
-
-    <section id="about" style="margin-top:3rem;">
-      <h2>關於我</h2>
-      <img src="assets/profile.jpg" alt="創作者照片" style="width:150px;border-radius:8px;">
-      <p style="margin-top:1rem;">
-        Yulian 用手作傳遞溫暖療癒的陪伴，讓每個人都能在創作中找回自己的節奏。
-      </p>
-    </section>
-
-    <section id="faq" style="margin-top:3rem;">
-      <h2>常見問題</h2>
-      <ul>
-        <li><strong>Q：</strong> 商品多久可以出貨？<br>付款完成後約 3~5 個工作天內出貨。</li>
-        <li><strong>Q：</strong> 可以退換貨嗎？<br>非重大瑕疵不接受退貨，敬請見諒。</li>
-        <li><strong>Q：</strong> 可以指定到貨時間嗎？<br>目前無法指定，依物流安排。</li>
-      </ul>
-    </section>
-
-    <section id="notice" style="margin-top:3rem;">
-      <h2>購物須知</h2>
-      <p>
-        📦 商品備貨時間：付款完成後 3~5 個工作天內出貨（不含例假日）。<br>
-        📬 配送方式：超商取貨 / 郵寄寄送。<br>
-        💳 支援信用卡、ATM、超商付款。<br>
-        🔄 基於手作屬性，除非重大瑕疵恕不退貨。<br>
-        📧 無開立發票，付款完成寄出收據或 email。
-      </p>
-    </section>
-  </div>
-
+  <main>
+    <h1>小怪獸材料包</h1>
+    <p>可愛的小怪獸創作，適合療癒紓壓，也適合親子同樂。</p>
+    <a href="shop.html" class="btn">立即購買</a>
+  </main>
   <footer>
-    <h3>聯絡我們</h3>
-    IG：@no25art｜LINE：@no25art<br>
-    Email：no25artroom@gmail.com<br>
-    YouTube：25貳拾伍號創作空間
+    <p>聯絡我們：no25artroom@gmail.com | IG：@no25art</p>
   </footer>
 </body>
 </html>
