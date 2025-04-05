@@ -5,83 +5,66 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>no25art 小怪獸材料包</title>
+  <link rel="stylesheet" href="style.css" />
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+  <script defer src="app.js"></script>
 </head>
-<body style="font-family:sans-serif;padding:2rem;">
-  <h1>小怪獸材料包</h1>
-  <img src="assets/gallery1.jpg" alt="商品圖" style="max-width:300px;border-radius:8px;" />
-  <p>價格：NT$688</p>
-  <p>可愛的小怪獸創作，適合療癒紓壓，也適合親子同樂。</p>
+<body>
+  <header>
+    <img src="assets/logo.png" alt="Logo">
+    <nav>
+      <a href="#shop">Shop</a>
+      <a href="#about">關於我</a>
+    </nav>
+  </header>
 
-  <label for="email">請輸入 Email 以完成訂購：</label><br/>
-  <input type="email" id="email" placeholder="you@example.com" style="padding:8px;width:300px;"><br/><br/>
-  <button onclick="checkout()" style="padding:10px 20px;font-size:16px;">立即購買</button>
+  <div class="container">
+    <section id="shop">
+      <h2>小怪獸材料包</h2>
+      <div class="product-card">
+        <img src="assets/gallery1.jpg" alt="產品圖">
+        <p>價格：NT$688</p>
+        <p>可愛的小怪獸創作，適合療癒紓壓，也適合親子同樂。</p>
+        <input type="email" id="email" placeholder="輸入 email 訂購" />
+        <button onclick="checkout()">立即購買</button>
+      </div>
+    </section>
 
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIza....",
-      authDomain: "no25art.firebaseapp.com",
-      projectId: "no25art",
-      storageBucket: "no25art.appspot.com",
-      messagingSenderId: "...",
-      appId: "..."
-    };
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
+    <section id="about" style="margin-top:3rem;">
+      <h2>關於我</h2>
+      <img src="assets/profile.jpg" alt="創作者照片" style="width:150px;border-radius:8px;">
+      <p style="margin-top:1rem;">
+        Yulian 用手作傳遞溫暖療癒的陪伴，讓每個人都能在創作中找回自己的節奏。
+      </p>
+    </section>
 
-    const item = {
-      id: "item001",
-      name: "小怪獸材料包",
-      price: 688
-    };
+    <section id="faq" style="margin-top:3rem;">
+      <h2>常見問題</h2>
+      <ul>
+        <li><strong>Q：</strong> 商品多久可以出貨？<br>付款完成後約 3~5 個工作天內出貨。</li>
+        <li><strong>Q：</strong> 可以退換貨嗎？<br>非重大瑕疵不接受退貨，敬請見諒。</li>
+        <li><strong>Q：</strong> 可以指定到貨時間嗎？<br>目前無法指定，依物流安排。</li>
+      </ul>
+    </section>
 
-    function checkout() {
-      const email = document.getElementById("email").value;
-      if (!email) {
-        alert("請先輸入 Email");
-        return;
-      }
+    <section id="notice" style="margin-top:3rem;">
+      <h2>購物須知</h2>
+      <p>
+        📦 商品備貨時間：付款完成後 3~5 個工作天內出貨（不含例假日）。<br>
+        📬 配送方式：超商取貨 / 郵寄寄送。<br>
+        💳 支援信用卡、ATM、超商付款。<br>
+        🔄 基於手作屬性，除非重大瑕疵恕不退貨。<br>
+        📧 無開立發票，付款完成寄出收據或 email。
+      </p>
+    </section>
+  </div>
 
-      db.collection("orders").add({
-        email: email,
-        itemId: item.id,
-        itemName: item.name,
-        amount: item.price,
-        timestamp: new Date()
-      }).then(() => {
-        const form = document.createElement("form");
-        form.method = "POST";
-        form.action = "https://payment.ecpay.com.tw/Cashier/AioCheckOut/V5";
-
-        const params = {
-          MerchantID: "3248362",
-          MerchantTradeNo: "NO25ART" + Date.now(),
-          MerchantTradeDate: new Date().toLocaleString("zh-TW", { hour12: false }),
-          PaymentType: "aio",
-          TotalAmount: item.price,
-          TradeDesc: "no25art 商品",
-          ItemName: item.name,
-          ReturnURL: "https://no25art.com/thanks.html",
-          ChoosePayment: "ALL",
-          EncryptType: 1,
-          ClientBackURL: "https://no25art.com/thanks.html",
-          Email: email,
-          CheckMacValue: "PLACEHOLDER"
-        };
-
-        for (const key in params) {
-          const input = document.createElement("input");
-          input.type = "hidden";
-          input.name = key;
-          input.value = params[key];
-          form.appendChild(input);
-        }
-
-        document.body.appendChild(form);
-        form.submit();
-      });
-    }
-  </script>
+  <footer>
+    <h3>聯絡我們</h3>
+    IG：@no25art｜LINE：@no25art<br>
+    Email：no25artroom@gmail.com<br>
+    YouTube：25貳拾伍號創作空間
+  </footer>
 </body>
 </html>
